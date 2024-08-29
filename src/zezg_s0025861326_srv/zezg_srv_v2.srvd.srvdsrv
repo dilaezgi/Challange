@@ -1,0 +1,4 @@
+@EndUserText.label: 'V2 Service Definitions'
+define service ZEZG_SRV_V2 {
+  expose ZEZG_DD_TRAVEL_001;
+}

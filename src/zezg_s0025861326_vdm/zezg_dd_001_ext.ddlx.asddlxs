@@ -1,0 +1,58 @@
+@Metadata.layer: #CORE
+
+annotate view ZEZG_DD_TRAVEL_001 with
+{
+@UI.facet: [
+       { id: 'idheader' ,
+             purpose: #HEADER,
+             label: 'TRAVEL' ,
+             type: #FIELDGROUP_REFERENCE,
+             targetQualifier: 'hdRelation'} ,
+  { id:'idTravel' ,
+               type: #COLLECTION ,
+               label: 'TRAVEL INFORMATION' ,
+               position: 10 } ,
+
+                { type: #IDENTIFICATION_REFERENCE ,
+               label : 'Travel Details',
+               parentId: 'idTravel',
+               id: 'idTravelDetail' ,
+               position: 10 }
+                             ]
+  @UI.fieldGroup: [{ qualifier: 'Travel Details' , position: 10 }]                          
+  @UI : { lineItem : [{position: 10, importance: #HIGH, label: 'Travel ID'}],
+  selectionField: [{position: 10 }] }
+  @EndUserText.label: 'Travel ID'
+  @UI.identification: [{ position: 10 , importance: #HIGH, label: 'Travel ID'}]
+  TravelId;
+  @Search.defaultSearchElement:true
+  @Search.fuzzinessThreshold: 0.90
+   @UI.fieldGroup: [{ qualifier: 'Travel Details' , position: 20 }]    
+  @UI.lineItem: [ { position: 20 , importance: #MEDIUM, label: 'Description' }]
+   @UI.identification: [{ position: 20 , importance: #HIGH, label: 'Description'}]
+  @EndUserText.label: 'Description'
+  Description;
+  @UI.lineItem: [ { position: 30 ,importance: #MEDIUM, label: 'Currency Code'} ]
+  @EndUserText.label: 'Currency Code'
+  CurrencyCode;
+  @UI.lineItem: [ { position: 40 , importance: #MEDIUM, label: 'Total Price'} ]
+  @EndUserText.label: 'Total Price'
+  TotalPrice;
+  @UI.lineItem: [ { position: 50 ,importance: #MEDIUM, label: 'Status', criticality: 'CriticalityStatus', criticalityRepresentation: #WITH_ICON } ]
+  @EndUserText.label: 'Status'
+  Status;
+  @UI.hidden: true
+  CriticalityStatus;
+   @UI.fieldGroup: [{ qualifier: 'Travel Details' , position: 30 }]    
+  @UI.lineItem: [ { position: 60 ,importance: #MEDIUM, label: 'Total Price Currency Concat' } ]
+   @UI.identification: [{ position: 30 , importance: #HIGH, label: 'Total Price Currency Concat'}]
+  @EndUserText.label: 'Total Price Currency Concat'
+  TotalPriceCurrencyConcat;
+   @UI.fieldGroup: [{ qualifier: 'Travel Details' , position: 40 }]    
+  @UI : { lineItem: [ { position: 70 ,importance: #MEDIUM, label: 'Status' , criticality: 'CriticalityStatus', criticalityRepresentation: #WITH_ICON} ] ,
+   selectionField: [{ position: 30 }] }
+  @Consumption.valueHelpDefinition: [{entity: {name: '/DMO/I_Overall_Status_VH_Text', element: 'Text' }}]
+  @EndUserText.label: 'Status'
+   @UI.identification: [{ position: 40 , importance: #HIGH, label: 'Status'}]
+  StatusText;
+}
